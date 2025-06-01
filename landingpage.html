@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Shop</title>
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --primary-pink: #FFC0CB; /* Light Pink */
+    --dark-pink: #FF69B4;    /* Hot Pink */
+    --text-color: #333;
+    --light-bg: #F8F8F8;
+    --white: #fff;
+    --border-color: #ddd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    scroll-behavior: smooth;
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--primary-pink);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    color: aqua;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-pink);
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--dark-pink);
+}
+
+/* General Section Styling */
+section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--dark-pink);
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--dark-pink);
+    color: var(--white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #e04a9e; 
+    transform: translateY(-2px);
+}
+.hero-section {
+    background-color: var(--primary-pink);
+    position: relative;
+    overflow: hidden;
+    padding: 120px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.hero-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.hero-content h1 {
+    color: var(--dark-pink);
+    font-size: 4rem;
+    margin-bottom: 30px;
+}
+
+.hero-images img {
+    position: absolute;
+    opacity: 0.7;
+    z-index: 5;
+}
+
+.hero-img-1 { 
+height: 100px;
+width: 100px;
+}
+
+.hero-img-2 { 
+height: 100px;
+width: 100px;
+}
+
+.hero-img-3 { 
+    bottom: 10%;
+    left: 8%;
+    transition: transform 3s ;
+    
+}
+.hero-img-3 :hover{ 
+transform: rotate(360deg);
+}
+.hero-img-cone { 
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; 
+    height: auto;
+    transition: transform 2s;
+}
+.hero-img-cone:hover{
+    transform: translate(400px);
+}
+
+.hero-section::before,
+.hero-section::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3); 
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.hero-section::before { 
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.4) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.4) 75%, transparent 75%, transparent);
+    background-size: 50px 50px;
+}
+
+.hero-section::after { 
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 120px;
+    border-radius: 50%;
+    transform: translate(50%, 50%) rotate(-30deg);
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.4) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.4) 75%, transparent 75%, transparent);
+    background-size: 60px 60px;
+}
+
+
+
+.about-section {
+    background-color: var(--white);
+    padding: 60px 20px;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+.about-image-container {
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Menu Section */
+.menu-section {
+    background-color: var(--primary-pink);
+    padding-bottom: 60px;
+}
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.menu-item {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+}
+
+.menu-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.menu-item h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--dark-pink);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+
+.contact-section,
+.order-section {
+    background-color: var(--white);
+}
+
+.contact-form,
+.order-form {
+    max-width: 600px;
+    margin: 40px auto 0 auto;
+    padding: 30px;
+    background-color: var(--primary-pink); 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea,
+.order-form input,
+.order-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.order-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.contact-form .btn,
+.order-form .btn {
+    width: auto;
+    display: block; /* Make button full width */
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-pink);
+    color: var(--white);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 15px;
+}
+
+.social-icons a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+.hero-img-cone{
+width: 100px;
+height: 100px;
+
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 5px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-images {
+        display: none; /* Hide large images on smaller screens */
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .contact-form,
+    .order-form {
+        padding: 20px;
+    }
+    
+}
+   </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="C:\Users\MANIKANTA\Downloads\15aca09b-9d00-4d72-9d62-d2002f517617.jpeg" alt="Ice Cream Logo"> <span>Ice Cream Shop</span>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#order">Order Online</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>Swim in Sweetness</h1>
+                <button class="btn" onclick="location.href='#order'">Order Now</button>
+            </div>
+            <div class="hero-images">
+                <img src="cream1.jpg" alt="Ice Cream 1" class="hero-img-1">
+                <img src="cream2.jpg" alt="Ice Cream 2" class="hero-img-2">
+                <img src="candy.jpeg" alt="Candy" class="hero-img-3">
+                <img src="cone.webp" alt="Ice Cream Cone" class="hero-img-cone">
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About Us</h2>
+            <p>Welcome to our Ice Cream Shop! We craft each flavor with the finest ingredients and love. Whether you prefer classic favorites or daring new tastes, we have something delightful for everyone.</p>
+            <div class="about-image-container">
+                <img src="about.webp" alt="About Us Ice Cream">
+            </div>
+        </section>
+
+        <section id="menu" class="menu-section">
+            <h2>Our Menu</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="vanilla.webp" alt="Vanilla Ice Cream">
+                    <h3>Vanilla</h3>
+                    <p>Smooth and creamy vanilla ice cream.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="choclate.jpg" alt="Chocolate Ice Cream">
+                    <h3>Chocolate</h3>
+                    <p>Rich and decadent chocolate ice cream.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="strawberry.jpeg" alt="Strawberry Ice Cream">
+                    <h3>Strawberry</h3>
+                    <p>Sweet and tangy strawberry ice cream.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="blue.avif" alt="Blueberry Ice Cream">
+                    <h3>BlueBerry Ice Cream</h3>
+                    <p>Bursting with the tangy sweetness of ripe, juicy blueberries.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="buttre scoch.jpg" alt="Butter Scotch Ice Cream">
+                    <h3>Butter Scotch Ice Cream</h3>
+                    <p>A rich blend of caramelized sugar and buttery goodness.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Us</h2>
+            <p>Have a question or feedback? Reach out to us!</p>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+
+        <section id="order" class="order-section">
+            <h2>Order Online</h2>
+            <p>Place your order online and enjoy our delicious ice creams!</p>
+            <form class="order-form">
+                <label for="flavor">Select Ice Cream Flavor:</label>
+                <select id="flavor" name="flavor" required>
+                    <option value="">Choose a flavor...</option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="strawberry">Strawberry</option>
+                    <option value="blueberry">Blueberry Ice Cream</option>
+                    <option value="butterscotch">Butter Scotch Ice Cream</option>
+                </select>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+                <label for="order-name">Your Name:</label>
+                <input type="text" id="order-name" name="name" required>
+
+                <label for="address">Your Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="phone">Your Phone Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="e.g., 1234567890" required>
+
+                <button type="submit" class="btn">Place Order</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Copyright MANIKANTA || All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
